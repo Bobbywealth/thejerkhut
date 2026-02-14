@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Jerk Hut | Kingston Flavors</title>
+  <link rel="icon" href="https://iili.io/qH6ulcP.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -602,28 +603,30 @@
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // Vimeo Video Autoplay Force
+    // Vimeo Video Autoplay
     const videoIframe = document.getElementById('hero-video');
     
-    // Reload iframe to force autoplay after page load
-    window.addEventListener('load', () => {
-      const src = videoIframe.src;
-      videoIframe.src = '';
-      setTimeout(() => {
-        videoIframe.src = src;
-      }, 100);
-    });
-
-    // Use Vimeo Player API if available
-    if (window.Vimeo) {
+    // Load Vimeo Player API
+    const vimeoScript = document.createElement('script');
+    vimeoScript.src = 'https://player.vimeo.com/api/player.js';
+    vimeoScript.onload = () => {
       const player = new Vimeo.Player(videoIframe);
+      
+      // Try to play immediately
       player.play().catch(() => {
-        // Autoplay blocked - user needs to interact first
-        console.log('Video autoplay blocked by browser');
+        console.log('Autoplay blocked - waiting for user interaction');
       });
-    }
+      
+      // Also try on first user interaction
+      const playOnInteraction = () => {
+        player.play();
+        document.removeEventListener('click', playOnInteraction);
+        document.removeEventListener('scroll', playOnInteraction);
+      };
+      document.addEventListener('click', playOnInteraction);
+      document.addEventListener('scroll', playOnInteraction);
+    };
+    document.head.appendChild(vimeoScript);
   </script>
-  <!-- Vimeo Player SDK for better autoplay control -->
-  <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
