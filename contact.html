@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | The Jerk Hut</title>
+  <link rel="icon" href="https://iili.io/qHsZbY7.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --fg: #eeeeee;
+      --muted: #666666;
+      --accent: #c8ff00;
+      --accent-dim: #9acc00;
+      --card: #0f0f0f;
+      --border: #1a1a1a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    @media (pointer: coarse) {
+      * { cursor: auto; }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      overflow-x: hidden;
+    }
+
+    .font-display {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .jerk-animate {
+      background: linear-gradient(90deg, var(--accent), #ff6b35, #f7931e, var(--accent));
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: spicyGradient 3s ease infinite;
+    }
+
+    @keyframes spicyGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .fire-glow {
+      animation: fireGlow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes fireGlow {
+      0% { text-shadow: 0 0 10px rgba(200, 255, 0, 0.5), 0 0 20px rgba(200, 255, 0, 0.3); }
+      100% { text-shadow: 0 0 20px rgba(200, 255, 0, 0.8), 0 0 40px rgba(200, 255, 0, 0.5); }
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background: white;
+    }
+
+    .form-input {
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 1rem;
+      color: white;
+      width: 100%;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    nav {
+      background: rgba(5, 5, 5, 0.95);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Noise Overlay -->
+  <div class="fixed inset-0 z-[9998] pointer-events-none opacity-0.03" style="background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="glitch-hover">
+        <img src="https://iili.io/qHsZbY7.th.png" alt="The Jerk Hut Logo" class="h-16 md:h-20 w-auto object-contain">
+      </a>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="index.html" class="text-white text-sm tracking-widest hover:text-[var(--accent)] transition-colors">HOME</a>
+        <a href="index.html#menu" class="text-white text-sm tracking-widest hover:text-[var(--accent)] transition-colors">MENU</a>
+        <a href="index.html#story" class="text-white text-sm tracking-widest hover:text-[var(--accent)] transition-colors">STORY</a>
+        <a href="careers.html" class="text-white text-sm tracking-widest hover:text-[var(--accent)] transition-colors">CAREERS</a>
+        <a href="franchise.html" class="text-white text-sm tracking-widest hover:text-[var(--accent)] transition-colors">FRANCHISE</a>
+        <a href="contact.html" class="text-[var(--accent)] text-sm tracking-widest hover:text-white transition-colors">CONTACT</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-[var(--accent)] font-mono text-sm tracking-widest mb-4 block">GET IN TOUCH</span>
+      <h1 class="font-display text-6xl md:text-8xl tracking-wide text-white mb-6">
+        CONTACT <span class="jerk-animate fire-glow">US</span>
+      </h1>
+      <p class="text-xl text-gray-400 tracking-widest uppercase mb-12">
+        We'd Love To Hear From You
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Info & Form Section -->
+  <section class="py-20 px-6 bg-[#0a0a0a]">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12">
+        
+        <!-- Contact Info -->
+        <div>
+          <h2 class="font-display text-4xl text-white mb-8">VISIT US</h2>
+          
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-[var(--accent)] font-mono text-sm tracking-widest mb-2">LOCATION</h3>
+              <p class="text-white text-lg">123 Hope Road<br>Kingston 6, Jamaica</p>
+            </div>
+            
+            <div>
+              <h3 class="text-[var(--accent)] font-mono text-sm tracking-widest mb-2">HOURS</h3>
+              <p class="text-white text-lg">Mon - Thu: 11am - 10pm<br>Fri - Sat: 11am - 12am<br>Sunday: 12pm - 9pm</p>
+            </div>
+            
+            <div>
+              <h3 class="text-[var(--accent)] font-mono text-sm tracking-widest mb-2">PHONE</h3>
+              <p class="text-white text-lg">(876) 555-1234</p>
+            </div>
+            
+            <div>
+              <h3 class="text-[var(--accent)] font-mono text-sm tracking-widest mb-2">EMAIL</h3>
+              <p class="text-white text-lg">info@thejerkhut.com</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div>
+          <h2 class="font-display text-4xl text-white mb-8">SEND A MESSAGE</h2>
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="text-[var(--muted)] text-sm tracking-widest mb-2 block">NAME</label>
+                <input type="text" class="form-input" placeholder="Your Name">
+              </div>
+              <div>
+                <label class="text-[var(--muted)] text-sm tracking-widest mb-2 block">EMAIL</label>
+                <input type="email" class="form-input" placeholder="your@email.com">
+              </div>
+            </div>
+            
+            <div>
+              <label class="text-[var(--muted)] text-sm tracking-widest mb-2 block">SUBJECT</label>
+              <select class="form-input">
+                <option class="bg-[var(--bg)]">General Inquiry</option>
+                <option class="bg-[var(--bg)]">Catering Request</option>
+                <option class="bg-[var(--bg)]">Private Events</option>
+                <option class="bg-[var(--bg)]">Franchise Opportunity</option>
+                <option class="bg-[var(--bg)]">Feedback</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="text-[var(--muted)] text-sm tracking-widest mb-2 block">MESSAGE</label>
+              <textarea rows="5" class="form-input resize-none" placeholder="Your message..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn-primary text-sm tracking-widest w-full">
+              SEND MESSAGE
+            </button>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="bg-[var(--card)] border border-[var(--border)] p-4 h-96 flex items-center justify-center">
+        <p class="text-[var(--muted)]">Map placeholder - Add Google Maps embed here</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Section -->
+  <section class="py-20 px-6 bg-[#0a0a0a]">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-display text-4xl text-white mb-8">FOLLOW US</h2>
+      <div class="flex justify-center gap-6">
+        <a href="#" class="text-[var(--accent)] text-4xl hover:text-white transition-colors">📘</a>
+        <a href="#" class="text-[var(--accent)] text-4xl hover:text-white transition-colors">📷</a>
+        <a href="#" class="text-[var(--accent)] text-4xl hover:text-white transition-colors">🐦</a>
+        <a href="#" class="text-[var(--accent)] text-4xl hover:text-white transition-colors">📺</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-white/5">
+    <div class="max-w-7xl mx-auto text-center">
+      <img src="https://iili.io/qHsZbY7.th.png" alt="The Jerk Hut Logo" class="h-16 w-auto object-contain mx-auto mb-6">
+      <p class="text-[var(--muted)] text-sm tracking-widest">© 2024 THE JERK HUT. KINGSTON STREET FOOD // MODERN FIRE</p>
+    </div>
+  </footer>
+</body>
+</html>
