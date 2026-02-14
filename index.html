@@ -338,18 +338,15 @@
   <!-- Hero Section -->
   <section class="relative h-screen flex items-center justify-center overflow-hidden">
     <!-- Video Background Container -->
-    <div class="hero-video-container">
-        <!-- 
-           Vimeo Embed with FORCED parameters:
-           autoplay=1, muted=1, loop=1, background=1
-           dnt=1 (Do Not Track - sometimes helps with cookie issues blocking playback)
-        -->
-        <iframe 
-          src="https://player.vimeo.com/video/1164907799?autoplay=1&loop=1&autopause=0&muted=1&background=1&dnt=1" 
-          frameborder="0" 
-          allow="autoplay; fullscreen; picture-in-picture" 
-          title="The Jerk Hut Background Video"
-          allowfullscreen>
+    <div class="hero-video-container" id="video-container">
+        <!-- Vimeo Embed with autoplay parameters -->
+        <iframe
+          src="https://player.vimeo.com/video/1164907799?autoplay=1&loop=1&autopause=0&muted=1&background=1&dnt=1&playsinline=1"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          playsinline
+          id="hero-video">
         </iframe>
     </div>
     
@@ -609,6 +606,29 @@
     }, { threshold: 0.1 });
 
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // Vimeo Video Autoplay Force
+    const videoIframe = document.getElementById('hero-video');
+    
+    // Reload iframe to force autoplay after page load
+    window.addEventListener('load', () => {
+      const src = videoIframe.src;
+      videoIframe.src = '';
+      setTimeout(() => {
+        videoIframe.src = src;
+      }, 100);
+    });
+
+    // Use Vimeo Player API if available
+    if (window.Vimeo) {
+      const player = new Vimeo.Player(videoIframe);
+      player.play().catch(() => {
+        // Autoplay blocked - user needs to interact first
+        console.log('Video autoplay blocked by browser');
+      });
+    }
   </script>
+  <!-- Vimeo Player SDK for better autoplay control -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
