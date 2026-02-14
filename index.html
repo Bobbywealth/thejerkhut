@@ -86,7 +86,6 @@
       height: 100%;
       z-index: 0;
       overflow: hidden;
-      pointer-events: none;
       background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center;
@@ -101,6 +100,7 @@
       min-height: 100vh;
       min-width: 177.77vh; /* 16:9 Aspect Ratio */
       transform: translate(-50%, -50%);
+      visibility: visible;
     }
 
     /* Hero Text Color Animation - Spicy JERK */
@@ -352,8 +352,8 @@
     </div>
     
     <!-- Overlays for readability -->
-    <div class="absolute inset-0 z-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/60 to-[var(--bg)]"></div>
-    <div class="absolute inset-0 z-0 bg-gradient-to-b from-[var(--bg)]/80 via-transparent to-transparent"></div>
+    <div class="absolute inset-0 z-[1] bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/60 to-[var(--bg)]"></div>
+    <div class="absolute inset-0 z-[1] bg-gradient-to-b from-[var(--bg)]/80 via-transparent to-transparent"></div>
 
     <div class="relative z-10 text-center px-6">
       <div class="overflow-hidden mb-4">
