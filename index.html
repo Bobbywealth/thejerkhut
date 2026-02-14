@@ -631,6 +631,20 @@
 
     revealElements.forEach(el => revealObserver.observe(el));
 
+    // Nav shadow on scroll
+    const mainNav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        mainNav.style.background = 'rgba(5, 5, 5, 0.95)';
+        mainNav.style.backdropFilter = 'blur(10px)';
+        mainNav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+      } else {
+        mainNav.style.background = 'transparent';
+        mainNav.style.backdropFilter = 'none';
+        mainNav.style.boxShadow = 'none';
+      }
+    });
+
     // Vimeo Video Autoplay
     const videoIframe = document.getElementById('hero-video');
     
